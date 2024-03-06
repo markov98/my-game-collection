@@ -1,0 +1,29 @@
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.site-title {
+    font-size: 1.8em;
+}
+
+.colored {
+    color: rgb(0, 180, 150);
+}
+
+.top-nav {
+    align-items: center;
+    display: flex;
+    gap: 3em;
+}
+
+.top-nav a {
+    color: rgb(0, 180, 150);
+    font-size: 1.3em;
+    text-decoration: none;
+}
+
+.top-nav a:hover {
+    color: white;
+
+}
