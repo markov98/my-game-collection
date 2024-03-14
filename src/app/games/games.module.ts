@@ -4,6 +4,7 @@ import { AllGamesComponent } from './all-games/all-games.component';
 import { GameDetailsComponent } from './game-details/game-details.component';
 import { EditGameComponent } from './edit-game/edit-game.component';
 import { AddGameComponent } from './add-game/add-game.component';
+import { GamesRoutingModule } from './games-ruuting.module';
 
 
 
@@ -15,7 +16,8 @@ import { AddGameComponent } from './add-game/add-game.component';
     AddGameComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    GamesRoutingModule
   ]
 })
 export class GamesModule { }

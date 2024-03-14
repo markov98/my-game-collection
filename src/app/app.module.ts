@@ -16,7 +16,8 @@ import { GamesModule } from './games/games.module';
     AppRoutingModule,
     CoreModule,
     UserModule,
-    GamesModule
+    GamesModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
