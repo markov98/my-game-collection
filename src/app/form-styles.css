@@ -1,0 +1,28 @@
+form {
+    margin: auto;
+    display: flex;
+    max-width: 25vw;
+    flex-direction: column;
+    align-items: center;
+}
+
+form input {
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+input[type='submit'] {
+    max-width: 40%;
+    font-size: 1.3em;
+    padding-block: 0.3em;
+    border: 1px solid rgb(0, 180, 150);
+    border-radius: 0.5em;
+    color: rgb(0, 180, 150);
+    background-color: inherit;
+}
+
+
+input[type='submit']:hover {
+    background-color: rgb(0, 180, 150);
+    color:rgb(0, 20, 15)
+}
