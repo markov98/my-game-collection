@@ -9,11 +9,11 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent {
   constructor() { };
 
-  login(form: NgForm) {
+  login(form: NgForm): void {
     if (form.invalid) {
-      alert("Error!")
-    } else {
-      alert('Seccess!')
+      return;
     }
+
+    alert('Seccess!')
   }
 }
