@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  constructor() { };
 
+  login(form: NgForm) {
+    if (form.invalid) {
+      alert("Error!")
+    } else {
+      alert('Seccess!')
+    }
+  }
 }
