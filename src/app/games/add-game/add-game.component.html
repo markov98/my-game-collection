@@ -1,14 +1,17 @@
-<form>
-    <h2>Add Game</h2>
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" required>
+<form [formGroup]="form" (ngSubmit)="addGame()">
+  <h2>Add Game</h2>
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" formControlName="name">
+  <div *ngIf="form.get('name')?.errors?.['required'] && form.get('name')?.touched" class="error">Name is required.</div>
 
-    <label for="year">Year</label>
-    <input type="date" id="year" name="year" required>
+  <label for="year">Year</label>
+  <input type="number" id="year" name="year" formControlName="year">
+  <div *ngIf="form.get('year')?.errors?.['required'] && form.get('year')?.touched" class="error">Year is required.</div>
+  
+  
+  <label for="Developer">Developer</label>
+  <input type="text" id="developer" name="developer" formControlName="developer">
+  <div *ngIf="form.get('developer')?.errors?.['required'] && form.get('developer')?.touched" class="error">Developer is required.</div>
 
-    <label for="developer">Developer</label>
-    <input type="text" id="developer" name="developer" required>
-
-    <input type="submit" value="Add Game">
-  </form>
-
+  <input type="submit" value="Add Game">
+</form>

@@ -9,9 +9,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddGameComponent {
   form: FormGroup = this.formBuilder.group({
     name: ['', Validators.required],
-    year: ['', Validators.required],
+    year: [null, [Validators.required, Validators.pattern(/^\d+$/)]],
     developer: ['', Validators.required],
   });;
 
   constructor(private formBuilder: FormBuilder) { }
+
+  addGame() {
+    if (this.form.invalid) {
+      return;
+    }
+
+    alert('Succes!!!')
+  }
 }
