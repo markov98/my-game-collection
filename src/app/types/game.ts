@@ -1,6 +1,8 @@
+import { User } from "./user";
+
 export interface Game {
-    uploadedBy: string,
     name: string,
     year: number,
-    developer: string
+    developer: string,
+    uploader: User
 }
