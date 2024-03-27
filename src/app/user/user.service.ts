@@ -14,6 +14,8 @@ export class UserService implements OnDestroy {
   currUser: User | null = null;
 
   get isLogged() : boolean {
+    console.log(this.currUser);
+    
     return !!this.currUser;
   }
 
