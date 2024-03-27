@@ -13,6 +13,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   register(email: string, password: string) {
-    return createUserWithEmailAndPassword(this.auth ,email, password);
+    return createUserWithEmailAndPassword(this.auth, email, password);
   }
 }

@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  errMsg: string = '';
+
   constructor(private service: UserService, private router: Router) { };
 
   register(form: NgForm): void {
@@ -24,8 +26,8 @@ export class RegisterComponent {
 
     const {email, password} = form.value;
 
-    this.service.register(email, password).then((result) => {     
-      this.router.navigate(['/login']);
-    });
+    this.service.register(email, password)
+      .then(() => this.router.navigate(['/login']))
+      .catch((err) => this.errMsg = err.message);
   }
 }
