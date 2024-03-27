@@ -1,16 +1,11 @@
 <form #form="ngForm" (ngSubmit)="register(form)">
   <h2>Register</h2>
-  <label for="username">Username</label>
-  <input type="text" id="username" name="username" required ngModel #username="ngModel" minlength="5">
-  <div *ngIf="(username.value.length < 5)  && username.touched" class="error">Username must be 5+ characters long.</div>
-
   <label for="email">Email</label>
   <input type="email" id="email" name="email" required ngModel #email="ngModel" minlength="5">
-  <div *ngIf="(email.value.length < 5)  && email.touched" class="error">Email must be 5+ characters long.</div>
 
   <label for="password">Password</label>
-  <input type="password" id="password" name="password" required ngModel #password="ngModel" minlength="5">
-  <div *ngIf="(password.value.length < 5)  && password.touched" class="error">Passwords must be 5+ characters long.</div>
+  <input type="password" id="password" name="password" required ngModel #password="ngModel" minlength="6">
+  <div *ngIf="(password.value.length < 5)  && password.touched" class="error">Passwords must be 6+ characters long.</div>
 
   <label for="re-password">Repeat Password</label>
   <input type="password" id="re-password" name="re-password" required ngModel #rePassword="ngModel">

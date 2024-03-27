@@ -24,7 +24,9 @@ export class RegisterComponent {
 
     const {email, username, password} = form.value;
 
-    this.service.register(email, username, password).subscribe(() => {
+    this.service.register(email, password).then((result) => {
+      console.log(result);
+      
       this.router.navigate(['/login']);
     });
   }

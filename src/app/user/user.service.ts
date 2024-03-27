@@ -1,19 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../types/user';
+import { Auth , createUserWithEmailAndPassword} from '@angular/fire/auth'
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private url : string = 'https://my-game-collection-5150f-default-rtdb.europe-west1.firebasedatabase.app/users/.json';
+  private auth: Auth = inject(Auth)
+
 
   constructor(private http: HttpClient) { }
 
-  register(email: string, username: string, password: string) {
-    console.log(email,username,password);
-    
-    return this.http.post<User>(this.url, {email, username, password})
+  register(email: string, password: string) {
+    return createUserWithEmailAndPassword(this.auth ,email, password);
   }
 }
