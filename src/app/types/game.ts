@@ -4,5 +4,6 @@ export interface Game {
     name: string,
     year: number,
     developer: string,
-    uploader: User
+    uploader: User,
+    userUrl: string
 }
