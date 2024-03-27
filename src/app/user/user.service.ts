@@ -23,6 +23,7 @@ export class UserService implements OnDestroy {
   constructor() {
     this.userSubscription = this.user$.subscribe((aUser: User | null) => {
      this.currUser = aUser;
+     console.log(this.isLogged);
     })
   }
 

@@ -7,7 +7,9 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  msg: string = this.userService.isLogged ? 'Hello User' : 'Hello Guest'
+  get isLogger() : boolean {
+    return this.userService.isLogged;
+  }
 
   constructor(private userService: UserService) { };
 

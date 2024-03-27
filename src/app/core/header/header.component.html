@@ -1,10 +1,14 @@
 <header>
     <h1 class="site-title">My<span class="colored">Game</span>Collection</h1>
     <nav class="top-nav">
-        <div>{{msg}}</div>
-        <a routerLink="/login">Login</a>
-        <a routerLink="/register">Register</a>
+        <ng-container *ngIf="isLogger">
+            <a routerLink="/games/add">Add Game</a>
+        </ng-container>
+        <ng-container *ngIf="!isLogger">
+            <a routerLink="/login">Login</a>
+            <a routerLink="/register">Register</a>
+        </ng-container>
         <a routerLink="/games">Games</a>
-        <a routerLink="/games/add">Add Game</a>
+
     </nav>
 </header>
