@@ -1,18 +1,39 @@
-import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Auth , createUserWithEmailAndPassword} from '@angular/fire/auth'
+import { Injectable, OnDestroy, inject } from '@angular/core';
+import { Auth , createUserWithEmailAndPassword, User, user} from '@angular/fire/auth'
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { Subscription } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService implements OnDestroy {
+  private auth: Auth = inject(Auth);
+  user$ = user(this.auth);
+  userSubscription: Subscription;
+  currUser: User | null = null;
 
-  private auth: Auth = inject(Auth)
+  get isLogged() : boolean {
+    return !!this.currUser;
+  }
 
 
-  constructor(private http: HttpClient) { }
+  constructor() {
+    this.userSubscription = this.user$.subscribe((aUser: User | null) => {
+     this.currUser = aUser;
+    })
+  }
 
   register(email: string, password: string) {
     return createUserWithEmailAndPassword(this.auth, email, password);
+  }
+
+  async login(email: string, password: string) {
+    const userCredentials = await signInWithEmailAndPassword(this.auth, email, password);
+    return userCredentials;
+  }
+
+  ngOnDestroy() {
+    this.userSubscription.unsubscribe();
   }
 }

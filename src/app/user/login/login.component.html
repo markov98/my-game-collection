@@ -1,13 +1,13 @@
 <form (ngSubmit)="login(form)" #form="ngForm">
     <h2>Login</h2>
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" required minlength="5" ngModel #inputUsername="ngModel">
+    <label for="username">Email</label>
+    <input type="text" id="email" name="email" required ngModel #inputEmail="ngModel">
 
     <label for="password">Password</label>
-    <input type="password" id="password" name="password" required minlength="5" ngModel #inputPassword="ngModel">
+    <input type="password" id="password" name="password" required minlength="6" ngModel #inputPassword="ngModel">
 
-    <ng-container *ngIf="form.submitted && form.invalid">
-        <p class="error">Invalid Username or Password!</p>
+    <ng-container *ngIf="form.submitted && form.invalid || err">
+        <p class="error">Invalid Email or Password!</p>
     </ng-container>
 
     <input type="submit" value="Login">
