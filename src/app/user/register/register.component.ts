@@ -22,11 +22,9 @@ export class RegisterComponent {
       return;
     }
 
-    const {email, username, password} = form.value;
+    const {email, password} = form.value;
 
-    this.service.register(email, password).then((result) => {
-      console.log(result);
-      
+    this.service.register(email, password).then((result) => {     
       this.router.navigate(['/login']);
     });
   }
