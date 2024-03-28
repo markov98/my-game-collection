@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { UserModule } from './user/user.module';
 import { GamesModule } from './games/games.module';
-import { env } from '../env/env'
+import { env } from '../env/env';
+import { NotFoundComponent } from './not-found/not-found.component'
 
 @NgModule({
   declarations: [
     AppComponent,
+    NotFoundComponent,
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(env.firebase)),
