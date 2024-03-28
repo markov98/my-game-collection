@@ -7,3 +7,8 @@ body {
 h1, h2, h3 {
     font-family: monospace;
 }
+
+hr {
+    border: 1px solid white;
+    width: 99vw;
+}
