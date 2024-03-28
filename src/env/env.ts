@@ -16,5 +16,6 @@ export const env = {
 
         measurementId: "G-YDECGBZMPQ"
 
-    }
+    },
+    url: 'https://my-game-collection-5150f-default-rtdb.europe-west1.firebasedatabase.app/'
 }

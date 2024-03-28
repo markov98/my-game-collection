@@ -10,19 +10,28 @@ export class UserService implements OnDestroy {
   private auth: Auth = inject(Auth);
   user$ = user(this.auth);
   userSubscription: Subscription;
-  currUser: User | null = null;
 
-  get isLogged(): boolean {
-    console.log(this.currUser);
-
-    return !!this.currUser;
+  get isLogged(): boolean { 
+    return !!this.auth.currentUser;
   }
 
+  get user() : User | null {
+    return this.auth.currentUser;
+  }
+
+  getIdToken() {
+    if (!this.user) {
+        return Promise.resolve(undefined);
+    }
+    
+    return this.user.getIdToken().catch(() => undefined);
+}
 
   constructor() {
     this.userSubscription = this.user$.subscribe((aUser: User | null) => {
-      this.currUser = aUser;
-    })
+      console.log(this.auth.currentUser);
+    });
+
   }
 
   async register(email: string, password: string) {

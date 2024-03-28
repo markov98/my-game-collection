@@ -13,5 +13,9 @@
   <input type="text" id="developer" name="developer" formControlName="developer">
   <div *ngIf="form.get('developer')?.errors?.['required'] && form.get('developer')?.touched" class="error">Developer is required.</div>
 
+  <label for="imgUrl">Image Url</label>
+  <input type="text" id="imgUrl" name="imgUrl" formControlName="imgUrl">
+  <div *ngIf="form.get('imgUrl')?.errors?.['required'] && form.get('imgUrl')?.touched" class="error">ImgUrl is required.</div>
+
   <input type="submit" value="Add Game">
 </form>
