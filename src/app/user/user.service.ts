@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy, inject } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, User, user, signInWithEmailAndPassword, signOut, idToken } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, User, signInWithEmailAndPassword, signOut, idToken } from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
 
 

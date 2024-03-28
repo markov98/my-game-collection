@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { env } from 'src/env/env';
 import { Game } from './types/game';
 import { UserService } from './user/user.service';
-import { from, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
