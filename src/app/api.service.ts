@@ -17,10 +17,6 @@ export class ApiService {
   // GAMES
 
   addGame(gameData: Object) {
-    return from(this.userService.getIdToken()).pipe(
-      switchMap(token => {
-        return this.http.post(`${this.url}games/.json?auth=${token}`, gameData);
-      })
-    );
+        return this.http.post(`${this.url}games/.json?auth=${this.userService.token}`, gameData);
   }
 }

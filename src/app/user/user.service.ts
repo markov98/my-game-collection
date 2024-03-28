@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy, inject } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, User, user, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, User, user, signInWithEmailAndPassword, signOut, idToken } from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
 
 
@@ -8,30 +8,23 @@ import { Subscription } from 'rxjs';
 })
 export class UserService implements OnDestroy {
   private auth: Auth = inject(Auth);
-  user$ = user(this.auth);
-  userSubscription: Subscription;
+  idToken$ = idToken(this.auth);
+  idTokenSubscription: Subscription;
+  token: string | null = null;
 
-  get isLogged(): boolean { 
+  get isLogged(): boolean {
     return !!this.auth.currentUser;
   }
 
-  get user() : User | null {
+  get user(): User | null {
     return this.auth.currentUser;
   }
 
-  getIdToken() {
-    if (!this.user) {
-        return Promise.resolve(undefined);
-    }
-    
-    return this.user.getIdToken().catch(() => undefined);
-}
 
   constructor() {
-    this.userSubscription = this.user$.subscribe((aUser: User | null) => {
-      console.log(this.auth.currentUser);
-    });
-
+    this.idTokenSubscription = this.idToken$.subscribe((result: string | null) => { 
+      this.token = result;
+    })
   }
 
   async register(email: string, password: string) {
@@ -46,7 +39,8 @@ export class UserService implements OnDestroy {
     signOut(this.auth);
   }
 
+
   ngOnDestroy() {
-    this.userSubscription.unsubscribe();
+    this.idTokenSubscription.unsubscribe();
   }
 }
