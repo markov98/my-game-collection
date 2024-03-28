@@ -27,7 +27,7 @@ export class RegisterComponent {
     const {email, password} = form.value;
 
     this.service.register(email, password)
-      .then(() => this.router.navigate(['/login']))
+      .then(() => this.router.navigate(['/games']))
       .catch((err) => this.errMsg = err.message);
   }
 }
