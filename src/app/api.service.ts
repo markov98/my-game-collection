@@ -15,7 +15,15 @@ export class ApiService {
 
   // GAMES
 
-  addGame(gameData: Object) {
-        return this.http.post(`${this.url}games/.json?auth=${this.userService.token}`, gameData);
+  addGame(name: string, year: number, developer: string, imgUrl: string) {
+    const game: Game = {
+      name,
+      year,
+      developer,
+      imgUrl,
+      uploaderId: this.userService.user?.uid
+    }
+    
+    return this.http.post(`${this.url}games/.json?auth=${this.userService.token}`, game);
   }
 }

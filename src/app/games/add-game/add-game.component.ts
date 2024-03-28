@@ -25,7 +25,7 @@ export class AddGameComponent {
 
     const { name, year, developer, imgUrl } = this.form.value;
 
-    this.apiService.addGame({ name, year, developer, imgUrl })
+    this.apiService.addGame(name, year, developer, imgUrl)
       .subscribe(() => this.router.navigate(['/games']))
   }
 }
