@@ -20,7 +20,6 @@ import { NotFoundComponent } from './not-found/not-found.component'
     provideFirebaseApp(() => initializeApp(env.firebase)),
     provideAuth(() => getAuth()),
     BrowserModule,
-    AppRoutingModule,
     CoreModule,
     UserModule,
     GamesModule,
