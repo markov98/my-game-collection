@@ -3,28 +3,36 @@ import {
   HttpEvent,
   HttpInterceptor,
   HttpHandler,
-  HttpRequest
+  HttpRequest,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 import { UserService } from './user/user.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) { }
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (this.userService.token) {
-        const modifiedUrl = req.url + `?auth=${this.userService.token}`;
-        const modifiedReq = req.clone({
-            url: modifiedUrl
-        })
+    let modifiedReq = req;
 
-        return next.handle(modifiedReq);
-    } else {
-        return next.handle(req);
+    if (this.userService.token) {
+      const modifiedUrl = req.url + `?auth=${this.userService.token}`;
+      modifiedReq = req.clone({
+        url: modifiedUrl
+      })
     }
+
+    return next.handle(modifiedReq).pipe(
+      catchError((error) => {
+        console.log(error);
+        this.router.navigate(['/error']);
+        return [error];
+      })
+    )
   }
 }
