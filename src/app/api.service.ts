@@ -24,6 +24,6 @@ export class ApiService {
       uploaderId: this.userService.user?.uid
     }
     
-    return this.http.post(`${this.url}games/.json?auth=${this.userService.token}`, game);
+    return this.http.post(`${this.url}games/.json`, game);
   }
 }
