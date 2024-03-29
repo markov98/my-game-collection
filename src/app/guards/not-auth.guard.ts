@@ -8,17 +8,17 @@ import {
 import { UserService } from '../user/user.service';
 
 @Injectable({ providedIn: 'root' })
-export class AuthActivate implements CanActivate {
+export class NotAuthActivate implements CanActivate {
   constructor(private userService: UserService, private router: Router) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): boolean {
+  ): boolean { 
     if (this.userService.isLogged) {
-      return true;
+      this.router.navigate(['/']);
+      return false;
     } else {
-      this.router.navigate(['/login']);
       return false;
     }
   }
