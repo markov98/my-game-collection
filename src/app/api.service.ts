@@ -21,9 +21,14 @@ export class ApiService {
       year,
       developer,
       imgUrl,
-      uploaderId: this.userService.user?.uid
+      uploaderId: this.userService.user?.uid,
+      comments: []
     }
     
     return this.http.post(`${this.url}games/.json`, game);
+  };
+
+  getGames() {
+    return this.http.get(`${this.url}games/.json`);
   }
 }
