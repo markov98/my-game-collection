@@ -1,13 +1,15 @@
-<li class="game-card">
+<div class="game-card">
     <img src="{{gameInfo.imgUrl}}" alt="{{gameInfo.name}}">
     <div class="info">
         <p>Name : <strong>{{gameInfo.name}}</strong></p>
         <p>Year: <strong>{{gameInfo.year}}</strong></p>
-        <p>Developer: <strong>{{gameInfo.developer}}</strong></p>  
+        <p>Developer: <strong>{{gameInfo.developer}}</strong></p>
         <div class='options'>
             <a routerLink="/games/{{gameId}}/comments">Comments</a>
-            <a routerLink="/games/{{gameId}}/edit">Edit</a>
-            <a href="" class="delete">Delete</a>
+            <ng-container *ngIf="gameInfo.uploaderId === userId">
+                <a routerLink="/games/{{gameId}}/edit">Edit</a>
+                <a href="" class="delete">Delete</a>
+            </ng-container>
         </div>
     </div>
-</li>
+</div>

@@ -19,7 +19,7 @@ export class NotAuthActivate implements CanActivate {
       this.router.navigate(['/']);
       return false;
     } else {
-      return false;
+      return true;
     }
   }
 }
