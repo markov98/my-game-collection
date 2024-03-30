@@ -12,7 +12,10 @@ export class GameCardComponent {
   @Input() game!: [string, Game];
   gameInfo: Game = {} as Game;
   gameId: string = '';
-  userId: string | undefined = this.userService.user?.uid;
+
+  get userId() : string | undefined  {
+    return this.userService.user?.uid;
+  }
 
   constructor(private userService: UserService, private apiService: ApiService) { }
 
