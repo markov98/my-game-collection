@@ -6,6 +6,7 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 import { UserService } from '../user/user.service';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthActivate implements CanActivate {
@@ -14,12 +15,17 @@ export class AuthActivate implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): boolean {
-    if (this.userService.isLogged) {
-      return true;
-    } else {
-      this.router.navigate(['/login']);
-      return false;
-    }
+  ): Observable<boolean> { 
+    return new Observable<boolean>((observer) => {
+      this.userService.idToken$.subscribe(() => {
+        if (this.userService.isLogged) {
+          observer.next(true);
+        } else {
+          observer.next(true);
+          this.router.navigate(['/login'])
+        }
+        observer.complete();
+      });
+    });
   }
 }

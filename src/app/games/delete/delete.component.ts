@@ -12,25 +12,25 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DeleteComponent implements OnInit {
   game: Game = {} as Game;
 
-  constructor (private apiService: ApiService, private userService: UserService, private route: ActivatedRoute, private router: Router) {}
+  constructor(private apiService: ApiService, private userService: UserService, private route: ActivatedRoute, private router: Router) { }
 
-ngOnInit(): void {
-  this.route.params.subscribe(params => {
-    const gameId = params['gameId'];
-    this.apiService.getGame(gameId).subscribe((game: any) => {
-      this.game = game;
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const gameId = params['gameId'];
+      this.apiService.getGame(gameId).subscribe((game: any) => {
+        this.game = game;
 
-      if (this.game.uploaderId !== this.userService.user?.uid) {
-        this.router.navigate(['/error']);
-        return;
-      }
+        if (this.game.uploaderId !== this.userService.user?.uid) {
+          this.router.navigate(['/error']);
+          return;
+        }
 
-      if (confirm(`Delete ${game.name}?`)) {
-        this.apiService.deleteGame(gameId).subscribe(() => {this.router.navigate(['/games'])})
-      } else {
-        this.router.navigate(['/games'])
-      }
-    })
-  });
-}
+        if (confirm(`Delete ${game.name}?`)) {
+          this.apiService.deleteGame(gameId).subscribe(() => { this.router.navigate(['/games']) })
+        } else {
+          this.router.navigate(['/games'])
+        }
+      })
+    });
+  }
 }

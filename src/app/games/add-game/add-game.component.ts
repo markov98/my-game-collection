@@ -14,7 +14,7 @@ export class AddGameComponent {
     year: [null, [Validators.required, Validators.pattern(/^\d+$/)]],
     developer: ['', Validators.required],
     imgUrl: ['', Validators.required]
-  });;
+  });
 
   constructor(private formBuilder: FormBuilder, private apiService: ApiService, private router: Router) { }
 

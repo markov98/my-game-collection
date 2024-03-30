@@ -6,6 +6,7 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 import { UserService } from '../user/user.service';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class NotAuthActivate implements CanActivate {
@@ -14,12 +15,17 @@ export class NotAuthActivate implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): boolean { 
-    if (this.userService.isLogged) {
-      this.router.navigate(['/']);
-      return false;
-    } else {
-      return true;
-    }
+  ): Observable<boolean> { 
+    return new Observable<boolean>((observer) => {
+      this.userService.idToken$.subscribe(() => {
+        if (this.userService.isLogged) {
+          this.router.navigate(['/']);
+          observer.next(false);
+        } else {
+          observer.next(true);
+        }
+        observer.complete();
+      });
+    });
   }
 }
