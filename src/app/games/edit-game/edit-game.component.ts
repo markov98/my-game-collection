@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
-import { Game } from 'src/app/types/game';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
@@ -18,7 +17,6 @@ export class EditGameComponent implements OnInit {
     imgUrl: ['', Validators.required]
   });
 
-  game: Game = {} as Game;
   gameId: string = '';
 
   constructor(
@@ -36,7 +34,12 @@ export class EditGameComponent implements OnInit {
         if (game.uploaderId !== this.userService.user?.uid) {
           this.router.navigate(['/error']);
         } else {
-          this.game = game;
+          this.form.setValue({
+            name: game.name,
+            year: game.year,
+            developer: game.developer,
+            imgUrl: game.imgUrl
+          })
         }
       })
     });
