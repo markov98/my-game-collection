@@ -31,4 +31,8 @@ export class ApiService {
   getGames() {
     return this.http.get(`${this.url}games/.json`);
   }
+
+  deleteGame(gameId: string) {
+    return this.http.delete(`${this.url}games/${gameId}/.json`)
+  }
 }
