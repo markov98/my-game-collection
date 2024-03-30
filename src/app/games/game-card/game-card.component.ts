@@ -19,7 +19,15 @@ export class GameCardComponent {
 
   constructor(private userService: UserService, private apiService: ApiService) { }
 
-  // Initialize the gameInfo and gameId properties when the input changes
+  delete(): void {    
+    if (this.gameInfo.uploaderId !== this.userService.user?.uid) {
+      return;
+    }
+    
+    this.apiService.deleteGame(this.gameId).subscribe(() => {console.log('Deleted!');
+     });
+  }
+
   ngOnChanges(): void {
     if (this.game) {
       this.gameInfo = this.game[1];
