@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { env } from 'src/env/env';
-import { Game } from './types/game';
+import { Game, GameForEdit } from './types/game';
 import { UserService } from './user/user.service';
 
 @Injectable({
@@ -26,6 +26,10 @@ export class ApiService {
     }
     
     return this.http.post(`${this.url}games/.json`, game);
+  };
+
+  editGame(gameId: string , gameInfo: GameForEdit) {    
+    return this.http.patch(`${this.url}games/${gameId}/.json`, gameInfo);
   };
 
   getGames() {
