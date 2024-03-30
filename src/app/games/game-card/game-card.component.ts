@@ -24,8 +24,11 @@ export class GameCardComponent {
       return;
     }
     
-    this.apiService.deleteGame(this.gameId).subscribe(() => {console.log('Deleted!');
-     });
+    if (confirm("Delete this game?")) {
+      this.apiService.deleteGame(this.gameId).subscribe(() => {
+        console.log('Deleted!');
+      });
+    }
   }
 
   ngOnChanges(): void {
