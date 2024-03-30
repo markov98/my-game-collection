@@ -8,7 +8,7 @@
             <a routerLink="/games/{{gameId}}/comments">Comments</a>
             <ng-container *ngIf="gameInfo.uploaderId === userId">
                 <a routerLink="/games/{{gameId}}/edit">Edit</a>
-                <a (click)="delete()" class="delete">Delete</a>
+                <a routerLink="/games/{{gameId}}/delete" class="delete">Delete</a>
             </ng-container>
         </div>
     </div>

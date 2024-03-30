@@ -15,8 +15,6 @@ export class AllGamesComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.getGames().subscribe(result => {
       this.games = Object.entries(result);
-      console.log(this.games);
-      
     } );
   }
 }

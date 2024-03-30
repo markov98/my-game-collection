@@ -32,7 +32,11 @@ export class ApiService {
     return this.http.get(`${this.url}games/.json`);
   }
 
+  getGame(gameId: string) {
+    return this.http.get(`${this.url}games/${gameId}/.json`);
+  }
+
   deleteGame(gameId: string) {
-    return this.http.delete(`${this.url}games/${gameId}/.json`)
+    return this.http.delete(`${this.url}games/${gameId}/.json`);
   }
 }

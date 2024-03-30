@@ -7,6 +7,7 @@ import { GamesRoutingModule } from './games-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GameCardComponent } from './game-card/game-card.component';
 import { GameCommentsComponent } from './game-comments/game-comments.component';
+import { DeleteComponent } from './delete/delete.component';
 
 
 
@@ -16,7 +17,8 @@ import { GameCommentsComponent } from './game-comments/game-comments.component';
     EditGameComponent,
     AddGameComponent,
     GameCardComponent,
-    GameCommentsComponent
+    GameCommentsComponent,
+    DeleteComponent
   ],
   imports: [
     CommonModule,
