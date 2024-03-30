@@ -1,12 +1,12 @@
 <li class="game-card">
-    <img src="" alt="">
+    <img src="{{gameInfo.imgUrl}}" alt="{{gameInfo.name}}">
     <div class="info">
-        <p>Name : <strong>Name Here</strong></p>
-        <p>Year: <strong>Year Here</strong></p>
-        <p>Developer: <strong>Developer Here</strong></p>  
+        <p>Name : <strong>{{gameInfo.name}}</strong></p>
+        <p>Year: <strong>{{gameInfo.year}}</strong></p>
+        <p>Developer: <strong>{{gameInfo.developer}}</strong></p>  
         <div class='options'>
-            <a href="">Comments</a>
-            <a href="">Edit</a>
+            <a routerLink="/games/{{gameId}}/comments">Comments</a>
+            <a routerLink="/games/{{gameId}}/edit">Edit</a>
             <a href="" class="delete">Delete</a>
         </div>
     </div>
