@@ -6,9 +6,8 @@
 
   <label for="year">Year</label>
   <input type="number" id="year" name="year" formControlName="year">
-  <div *ngIf="form.get('year')?.errors?.['required'] && form.get('year')?.touched" class="error">Year is required.</div>
-  
-  
+  <div *ngIf="form.get('year')?.errors?.['required'] && form.get('year')?.touched" class="error">Year must be a number and is required.</div>
+
   <label for="Developer">Developer</label>
   <input type="text" id="developer" name="developer" formControlName="developer">
   <div *ngIf="form.get('developer')?.errors?.['required'] && form.get('developer')?.touched" class="error">Developer is required.</div>
