@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { env } from 'src/env/env';
 import { Game, GameForEdit } from './types/game';
+import { Comment } from './types/coment';
 import { UserService } from './user/user.service';
 
 @Injectable({
@@ -42,5 +43,17 @@ export class ApiService {
 
   deleteGame(gameId: string) {
     return this.http.delete(`${this.url}games/${gameId}/.json`);
+  }
+
+  // COMMENTS
+
+  addComment(gameId: string, commentsText: string) {
+    const comment : Comment = {
+      content: commentsText,
+      commenterId: this.userService.user?.uid,
+      commenterEmail: this.userService.user?.email,
+    }
+
+    return this.http.post(`${this.url}games/${gameId}/comments/.json`, comment);
   }
 }

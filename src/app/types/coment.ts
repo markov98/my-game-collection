@@ -1,5 +1,5 @@
 export interface Comment {
-    commenterEmail: string,
-    commenterId: string,
+    commenterEmail: string | undefined | null,
+    commenterId: string | undefined,
     content: string
 }
