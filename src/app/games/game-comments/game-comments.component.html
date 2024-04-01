@@ -7,4 +7,10 @@
         <textarea id="newComment" name="newComment" formControlName="newComment"></textarea>
         <input type="submit" value="Comment">
     </form>
+    <ul class="comments-list">
+        <li *ngFor="let comment of comments">
+            <p class="commenter">{{comment.commenterEmail}}</p>
+            <p class="content">{{comment.content}}</p>
+        </li>
+    </ul>
 </div>

@@ -14,12 +14,9 @@ import { UserService } from 'src/app/user/user.service';
 export class GameCommentsComponent implements OnInit {
   game: Game = {} as Game;
   gameId: string = '';
+  comments: Comment[] = [];
 
-  get comments(): Comment[] {
-    return this.game.comments;
-  }
-
-  get canComment() : boolean {
+  get canComment(): boolean {
     return this.userService.isLogged;
   }
 
@@ -43,13 +40,20 @@ export class GameCommentsComponent implements OnInit {
           this.router.navigate(['/error']);
         } else {
           this.game = game;
+          this.comments = Object.values(this.game.comments) || [];
         }
       })
     });
   }
 
   addComment() {
-    this.apiService.addComment(this.gameId, this.form.value.newComment).subscribe(result => {
+    this.apiService.addComment(this.gameId, this.form.value.newComment).subscribe(() => {
+      this.comments.push({
+        commenterId: this.userService.user?.uid,
+        commenterEmail: this.userService.user?.email,
+        content: this.form.value.newComment
+      })
+      
       this.form.reset();
     })
   }
