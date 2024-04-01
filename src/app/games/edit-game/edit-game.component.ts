@@ -30,8 +30,8 @@ export class EditGameComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.gameId = params['gameId'];
-      this.apiService.getGame(this.gameId).subscribe((game: any) => {
-        if (game.uploaderId !== this.userService.user?.uid) {
+      this.apiService.getGame(this.gameId).subscribe((game: any) => {       
+        if (!game || game.uploaderId !== this.userService.user?.uid) {
           this.router.navigate(['/error']);
         } else {
           this.form.setValue({
