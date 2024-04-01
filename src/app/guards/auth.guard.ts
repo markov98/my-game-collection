@@ -22,7 +22,7 @@ export class AuthActivate implements CanActivate {
           observer.next(true);
         } else {
           observer.next(true);
-          this.router.navigate(['/login'])
+          this.router.navigate(['/error'])
         }
         observer.complete();
       });

@@ -1,1 +1,10 @@
-<p>game-comments works!</p>
+<div class="container">
+    <header>
+        <img src="{{game.imgUrl}}" alt="{{game.name}}">
+        <h2>Comments:</h2>
+    </header>
+    <form *ngIf="canComment" class="comment-form" [formGroup]="form" (ngSubmit)="addComment()">
+        <textarea id="newComment" name="newComment" formControlName="newComment"></textarea>
+        <input type="submit" value="Comment">
+    </form>
+</div>

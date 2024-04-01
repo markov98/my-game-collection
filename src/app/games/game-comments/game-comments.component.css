@@ -1,0 +1,42 @@
+.container {
+    margin-inline: auto;
+    width: 65em;
+}
+
+header {
+    width: 100%;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    gap: 1.5em
+}
+
+img {
+    max-width: 6em;
+    max-height: 12em;
+}
+
+.comment-form {
+    margin-block: 0.8em;
+    display: flex;
+}
+
+textarea {
+    resize: none;
+    width: 90%;
+    height: 2em;
+}
+
+input[type='submit'] {
+    font-size: 1em;
+    border: 1px solid rgb(0, 180, 150);
+    border-radius: 0.2em;
+    color: rgb(0, 180, 150);
+    background-color: inherit;
+}
+
+
+input[type='submit']:hover {
+    background-color: rgb(0, 180, 150);
+    color:rgb(0, 20, 15)
+}
