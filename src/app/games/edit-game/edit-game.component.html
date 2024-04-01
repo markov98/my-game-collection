@@ -1,5 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="editGame()">
-    <h2>Add Game</h2>
+    <h2>Edit Game</h2>
     <label for="name">Name</label>
     <input type="text" id="name" name="name" formControlName="name">
     <div *ngIf="form.get('name')?.errors?.['required'] && form.get('name')?.touched" class="error">Name is required.</div>
