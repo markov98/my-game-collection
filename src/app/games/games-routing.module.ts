@@ -5,6 +5,7 @@ import { AddGameComponent } from './add-game/add-game.component';
 import { AuthActivate } from '../guards/auth.guard';
 import { DeleteComponent } from './delete/delete.component';
 import { EditGameComponent } from './edit-game/edit-game.component';
+import { GameCommentsComponent } from './game-comments/game-comments.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', component: AllGamesComponent },
       { path: 'add', component: AddGameComponent, canActivate: [AuthActivate] },
       { path: ':gameId/delete', component: DeleteComponent, canActivate: [AuthActivate] },
-      { path: ':gameId/edit', component: EditGameComponent, canActivate: [AuthActivate] }
+      { path: ':gameId/edit', component: EditGameComponent, canActivate: [AuthActivate] },
+      { path: ':gameId/comments', component: GameCommentsComponent }
     ]
   }
 ];
