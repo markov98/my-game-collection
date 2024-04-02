@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GameCardComponent } from './game-card/game-card.component';
 import { GameCommentsComponent } from './game-comments/game-comments.component';
 import { DeleteComponent } from './delete/delete.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -23,7 +24,8 @@ import { DeleteComponent } from './delete/delete.component';
   imports: [
     CommonModule,
     GamesRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class GamesModule { }

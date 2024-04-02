@@ -1,9 +1,9 @@
 <div class="game-card">
     <img src="{{gameInfo.imgUrl}}" alt="{{gameInfo.name}}">
     <div class="info">
-        <p>Name : <strong>{{gameInfo.name}}</strong></p>
+        <p>Name : <strong>{{gameInfo.name | slice: 23}}</strong></p>
         <p>Year: <strong>{{gameInfo.year}}</strong></p>
-        <p>Developer: <strong>{{gameInfo.developer}}</strong></p>
+        <p>Developer: <strong>{{gameInfo.developer | slice: 23}}</strong></p>
         <div class='options'>
             <a routerLink="/games/{{gameId}}/comments">Comments</a>
             <ng-container *ngIf="gameInfo.uploaderId === userId">

@@ -11,12 +11,13 @@ import { env } from '../env/env';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component'
 import { AppInterceptor } from './app.interceptor';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
-    HomeComponent,
+    HomeComponent
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(env.firebase)),
@@ -24,6 +25,7 @@ import { AppInterceptor } from './app.interceptor';
     BrowserModule,
     CoreModule,
     GamesModule,
+    SharedModule,
     AppRoutingModule,
     HttpClientModule
   ],
