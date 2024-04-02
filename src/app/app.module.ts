@@ -6,7 +6,6 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { UserModule } from './user/user.module';
 import { GamesModule } from './games/games.module';
 import { env } from '../env/env';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -24,7 +23,6 @@ import { AppInterceptor } from './app.interceptor';
     provideAuth(() => getAuth()),
     BrowserModule,
     CoreModule,
-    UserModule,
     GamesModule,
     AppRoutingModule,
     HttpClientModule

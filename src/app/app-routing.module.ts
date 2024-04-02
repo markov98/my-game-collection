@@ -7,7 +7,12 @@ import { ErrorComponent } from './core/error/error.component';
 const routes: Routes = [
   {path: '', pathMatch: 'full', component: HomeComponent},
   {path: 'error', component: ErrorComponent},
-  {path: '**', component: NotFoundComponent}
+  {
+    path: '',
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+  },
+  {path: '**', redirectTo: '/404'},
+  {path: '404', pathMatch: 'full', component: NotFoundComponent}
 ];
 
 @NgModule({
