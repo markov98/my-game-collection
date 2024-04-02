@@ -1,0 +1,28 @@
+h2 {
+    font-size: 3em;
+    text-align: center;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    gap: 6em;
+}
+
+a {
+    font-size: 2.5em;
+    text-decoration: none;
+    color: rgb(0, 180, 150);
+}
+
+a:hover {
+    color: white;
+}
+
+.delete {
+    color: rgb(200, 0, 0)
+}
+
+.delete:hover {
+    cursor: pointer;
+}
