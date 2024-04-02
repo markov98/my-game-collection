@@ -60,3 +60,9 @@ li {
 .content {
     font-style: italic;
 }
+
+@media (max-width: 1000px) {
+    .container {
+        width: 90%;
+    }
+}

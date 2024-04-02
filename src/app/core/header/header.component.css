@@ -31,3 +31,13 @@ header {
     color: white;
 
 }
+
+@media (max-width: 800px) {
+    header {
+        flex-direction: column;
+    }
+
+    .site-title {
+        text-align: center;
+    }
+}

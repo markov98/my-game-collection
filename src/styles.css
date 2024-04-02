@@ -16,3 +16,15 @@ hr {
     border: 1px solid white;
     width: 99vw;
 }
+
+@media (max-width: 800px) {
+    body {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 0.7em;
+    }
+}
