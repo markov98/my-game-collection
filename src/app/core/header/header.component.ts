@@ -12,6 +12,10 @@ export class HeaderComponent {
     return this.userService.isLogged;
   }
 
+  get user() : string {
+    return this.userService.user?.email || "Guest";
+  }
+
   constructor(private userService: UserService, private router: Router) { };
 
   logout(): void {
