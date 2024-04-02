@@ -23,6 +23,10 @@ header {
     text-decoration: none;
 }
 
+.welcome {
+    font-size: 1.3em;
+}
+
 .top-nav a:hover {
     color: white;
 
