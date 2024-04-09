@@ -16,9 +16,12 @@ export class AddGameComponent {
     imgUrl: ['', Validators.required]
   });
 
+  formSubmitted: boolean = false;
+
   constructor(private formBuilder: FormBuilder, private apiService: ApiService, private router: Router) { }
 
   addGame() {
+    this.formSubmitted = true;
     if (this.form.invalid) {
       return;
     }
