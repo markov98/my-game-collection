@@ -21,6 +21,7 @@ header {
     color: rgb(0, 180, 150);
     font-size: 1.3em;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .welcome {
