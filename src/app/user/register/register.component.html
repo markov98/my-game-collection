@@ -3,16 +3,17 @@
   <div class="error">{{errMsg}}</div>
   <label for="email">Email</label>
   <input type="email" id="email" name="email" required ngModel #email="ngModel" minlength="5">
+  <div *ngIf="email.value.length === 0 && form.submitted" class="error">Email is required</div>
 
   <label for="password">Password</label>
   <input type="password" id="password" name="password" required ngModel #password="ngModel" minlength="6">
-  <div *ngIf="(password.value.length < 5)  && password.touched" class="error">Passwords must be 6+ characters long.
-  </div>
+  <div *ngIf="(password.value.length < 5)  && (password.touched || form.submitted)" class="error">Passwords must be 6+ characters long.</div>
 
   <label for="re-password">Repeat Password</label>
   <input type="password" id="re-password" name="re-password" required ngModel #rePassword="ngModel">
 
   <div *ngIf="password.value !== rePassword.value && rePassword.touched" class="error">Passwords do not match</div>
+  <div *ngIf="rePassword.value.length === 0 && form.submitted" class="error">Repeat Password is required</div>
 
   <input type="submit" value="Register">
 </form>
