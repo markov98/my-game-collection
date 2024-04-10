@@ -3,10 +3,12 @@ import {
   ActivatedRouteSnapshot,
   CanActivate,
   Router,
-  RouterStateSnapshot
+  RouterStateSnapshot,
+  UrlTree
 } from '@angular/router';
 import { UserService } from '../user/user.service';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AuthActivate implements CanActivate {
@@ -15,17 +17,15 @@ export class AuthActivate implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean> { 
-    return new Observable<boolean>((observer) => {
-      this.userService.idToken$.subscribe(() => {
+  ): Observable<boolean | UrlTree> { 
+    return this.userService.idToken$.pipe(
+      map(() => {
         if (this.userService.isLogged) {
-          observer.next(true);
+          return true;
         } else {
-          observer.next(false);
-          this.router.navigate(['/login']);
+          return this.router.createUrlTree(['/login']);
         }
-        observer.complete();
-      });
-    });
+      })
+    );
   }
 }
