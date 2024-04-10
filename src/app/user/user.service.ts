@@ -11,6 +11,7 @@ export class UserService implements OnDestroy {
   idToken$ = idToken(this.auth);
   idTokenSubscription: Subscription;
   token: string | null = null;
+  isAuthenticating: boolean = true;
 
   get isLogged(): boolean {
     return !!this.auth.currentUser;
@@ -24,6 +25,7 @@ export class UserService implements OnDestroy {
   constructor() {
     this.idTokenSubscription = this.idToken$.subscribe((result: string | null) => { 
       this.token = result;
+      this.isAuthenticating = false;
     })
   }
 

@@ -12,12 +12,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component'
 import { AppInterceptor } from './app.interceptor';
 import { SharedModule } from './shared/shared.module';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    AuthComponent
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(env.firebase)),
