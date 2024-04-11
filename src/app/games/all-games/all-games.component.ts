@@ -8,13 +8,15 @@ import { Game } from 'src/app/types/game';
   styleUrls: ['./all-games.component.css']
 })
 export class AllGamesComponent implements OnInit {
-  games : [string, Game][] = []
+  isLoading: boolean = true;
+  games: [string, Game][] = []
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.apiService.getGames().subscribe(result => {
       this.games = Object.entries(result);
-    } );
+      this.isLoading = false;
+    });
   }
 }

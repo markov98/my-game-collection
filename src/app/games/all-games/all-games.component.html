@@ -1,4 +1,7 @@
-<ul class="container">
-    <li *ngFor="let game of games"><app-game-card [game]="game"/></li>
-</ul>
-<h2 *ngIf="games.length === 0">No games found!</h2>
+<h2 *ngIf="isLoading">Loading...</h2>
+<div class="container" *ngIf="!isLoading">
+    <ul class="games-list">
+        <li *ngFor="let game of games"><app-game-card [game]="game"/></li>
+    </ul>
+    <h2 *ngIf="games.length === 0">No games found!</h2>
+</div>
