@@ -4,6 +4,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     gap: 1.5em;
+    padding: 0;
 }
 
 @media (max-width: 800px) {
